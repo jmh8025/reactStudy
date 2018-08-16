@@ -1,13 +1,10 @@
+import Button from '@material-ui/core/Button';
 import * as React from "react"
-
 import "./table.css";
+
 
 interface tableProp<T>{
     memberInfo : T[],
-}
-
-interface tableState{
-    view : string
 }
 
 export interface memberModelProps{
@@ -16,17 +13,27 @@ export interface memberModelProps{
     phoneNum : string
 }
 
-class Mytable extends React.Component<tableProp<memberModelProps>, tableState>{
+class Mytable extends React.Component<tableProp<memberModelProps>, memberModelProps>{
     constructor(props : tableProp<memberModelProps>){
         super(props);
 
         this.state = {
-            view : "안녕하세요!"
+            name : "",
+            age : 0,
+            phoneNum : ""
         };
     }
+    
 
-    public AddclickHandler(){
-        this.setState({view : "잘지내봐요!"});
+    public AddclickHandler = () => {
+        this.setState((preState, props)=>{
+             
+            return {
+                 name : "홍길동",
+                 age : 40,
+                 phoneNum : "01055555555"    
+                };
+        })
     }
 
     public render(){
@@ -55,10 +62,17 @@ class Mytable extends React.Component<tableProp<memberModelProps>, tableState>{
                                 )
                             }))
                         }
+                        {
+                            this.state.name!=="" && 
+                            <tr>
+                                <td>{this.state.name}</td>
+                                <td>{this.state.age}</td>
+                                <td>{this.state.phoneNum}</td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
-                <button onClick={event => this.AddclickHandler()}>Add</button>
-                <h1>{this.state.view}</h1>
+                <Button onClick={event => this.AddclickHandler()}  variant="contained"  color="primary">Add</Button>
             </div>
         )
     }
@@ -73,5 +87,4 @@ const TableRow : React.SFC<memberModelProps> = (props) => {
         </tr>
     )
 }
-
 export default Mytable;
