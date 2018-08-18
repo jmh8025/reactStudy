@@ -10,7 +10,7 @@ class Second extends React.Component{
                {
                    1 + 1 === 3
                    ? '맞다'
-                   : '틀리다!'
+                   : '틀리2다!'
                }
             </div>
         );
