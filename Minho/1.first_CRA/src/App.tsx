@@ -17,7 +17,7 @@ class App extends React.Component {
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
         <First button="버튼클릭"/> 
-        <Second name="이름넘기기"/>
+        <Second />
       </div>
     );
   }
